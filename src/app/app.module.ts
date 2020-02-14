@@ -8,6 +8,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { BalloonHomeComponent } from './shared/components/balloon-home/balloon-home.component';
 import { ContainerHomeComponent } from './shared/components/container-home/container-home.component';
 import { ContainerListPokemonComponent } from './shared/components/container-list-pokemon/container-list-pokemon.component';
+import { CardTrainerComponent } from './shared/components/card-trainer/card-trainer.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ContainerListPokemonComponent } from './shared/components/container-lis
     //
     BalloonHomeComponent,
     ContainerHomeComponent,
-    ContainerListPokemonComponent
+    ContainerListPokemonComponent,
+    CardTrainerComponent
   ],
   imports: [
     BrowserModule,
