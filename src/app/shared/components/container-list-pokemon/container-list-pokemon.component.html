@@ -1,10 +1,10 @@
-<div class="nes-container with-title is-centered">
+<div class="nes-container with-title is-centered" style="height: 408px;">
   <p class="title">Selection Pókemon</p>
   <div class="nes-field">
     <label for="name_field">Search</label>
     <input type="text" id="name_field" class="nes-input">
   </div>
-  <div class="lists" style="margin-top: 5%;">
+  <div class="lists" style="margin-top: 5%; overflow: auto; height: 250px;">
     <ul class="nes-list is-disc" *ngFor="let pokemon of pokemons" style="text-align: justify;">
       <label>
         <input type="checkbox" class="nes-checkbox" />
