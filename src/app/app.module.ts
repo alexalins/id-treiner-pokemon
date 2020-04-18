@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule }   from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +10,9 @@ import { BalloonHomeComponent } from './shared/components/balloon-home/balloon-h
 import { ContainerHomeComponent } from './shared/components/container-home/container-home.component';
 import { ContainerListPokemonComponent } from './shared/components/container-list-pokemon/container-list-pokemon.component';
 import { CardTrainerComponent } from './shared/components/card-trainer/card-trainer.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { StoreModule } from '@ngrx/store';
+import { pokeReducer } from '../app/redux/PokeReducer';
 
 @NgModule({
   declarations: [
@@ -18,12 +22,17 @@ import { CardTrainerComponent } from './shared/components/card-trainer/card-trai
     BalloonHomeComponent,
     ContainerHomeComponent,
     ContainerListPokemonComponent,
-    CardTrainerComponent
+    CardTrainerComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
-    AppRoutingModule, 
+    AppRoutingModule,
+    Ng2SearchPipeModule,
+    StoreModule.forRoot({
+      cart: pokeReducer
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
