@@ -9,17 +9,25 @@ export function pokeReducer(state = bag, action: ActionModel) {
     switch (action.type) {
         case ActionTypes.Add:
             {
-                state.products.push(action.payload);
-                state.total = calculateTotal(state.products);
-                console.log(state);
-                return state;
+                state.total = calculateTotal(state.pokemons);
+                if (state.total <= 6) {
+                    if (!isExist(state.pokemons, action.payload)) {
+                        state.pokemons.push(action.payload);
+                        console.log(state);
+                        return state;
+                    } else {
+                        ActionTypes.Remove
+                    }
+                } else {
+                    alert("Bag Full!!!");
+                }
             };
 
         case ActionTypes.Remove:
             {
-                const index = state.products.indexOf(action.payload);
-                state.products.splice(index, 1);
-                state.total = calculateTotal(state.products);
+                const index = state.pokemons.indexOf(action.payload);
+                state.pokemons.splice(index, 1);
+                state.total = calculateTotal(state.pokemons);
                 console.log(state);
                 return state;
             };
@@ -27,10 +35,21 @@ export function pokeReducer(state = bag, action: ActionModel) {
         case ActionTypes.Clear:
             {
                 state = new Bag();
-                state.total = calculateTotal(state.products);
+                state.total = calculateTotal(state.pokemons);
                 console.log(state);
                 return state;
-            }
+            };
+
+        case ActionTypes.List:
+            {
+                console.log(state);
+                return state;
+            };
+
+        case ActionTypes.Count:
+            {
+                return calculateTotal(state.pokemons);
+            };
 
         default:
             return state;
@@ -42,5 +61,15 @@ export function pokeReducer(state = bag, action: ActionModel) {
             total += 1;
         });
         return total;
+    }
+
+    function isExist(pokemons: Pokemon[], pokemon: Pokemon): boolean {
+        let value = false;
+        pokemons.forEach(p => {
+            if (p.name == pokemon.name) {
+                value = true;
+            }
+        });
+        return value;
     }
 }

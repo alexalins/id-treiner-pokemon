@@ -1,6 +1,6 @@
 import { Pokemon } from './pokemon';
 
 export class Bag {
-    public products: Pokemon[] = [];
+    public pokemons: Pokemon[] = [];
     public total: number = 0;
 }

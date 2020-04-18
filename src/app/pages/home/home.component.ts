@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Bag } from 'src/app/models/Bag';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +7,7 @@ import { Bag } from 'src/app/models/Bag';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(
-    private store: Store<Bag>,
-  ) { }
+  constructor() { }
 
   ngOnInit() {
   }

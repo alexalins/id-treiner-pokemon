@@ -4,6 +4,9 @@ import { Pokemon } from 'src/app/models/pokemon';
 import { EventEmitter } from 'protractor';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import { Bag } from 'src/app/models/Bag';
+import { Add, List, Count } from 'src/app/redux/Actions';
 
 
 @Component({
@@ -11,9 +14,12 @@ import { debounceTime } from 'rxjs/operators';
   templateUrl: './container-list-pokemon.component.html',
   styleUrls: ['./container-list-pokemon.component.css']
 })
-export class ContainerListPokemonComponent implements OnInit{
+export class ContainerListPokemonComponent implements OnInit {
 
-  constructor(private pokeService: PokeApiService) { }
+  constructor(
+    private pokeService: PokeApiService,
+    private store: Store<Bag>
+  ) { }
   pokemons: Pokemon[] = [];
   searchPokemon: string;
 
@@ -28,4 +34,7 @@ export class ContainerListPokemonComponent implements OnInit{
 
   }
 
+  async add(pokemon: Pokemon) {
+    this.store.dispatch(Add(pokemon));
+  }
 }
