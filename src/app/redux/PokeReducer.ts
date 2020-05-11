@@ -10,17 +10,8 @@ export function pokeReducer(state = bag, action: ActionModel) {
         case ActionTypes.Add:
             {
                 state.total = calculateTotal(state.pokemons);
-                if (state.total <= 6) {
-                    if (!isExist(state.pokemons, action.payload)) {
-                        state.pokemons.push(action.payload);
-                        console.log(state);
-                        return state;
-                    } else {
-                        ActionTypes.Remove
-                    }
-                } else {
-                    alert("Bag Full!!!");
-                }
+                state.pokemons.push(action.payload);
+                return state;
             };
 
         case ActionTypes.Remove:
@@ -28,7 +19,7 @@ export function pokeReducer(state = bag, action: ActionModel) {
                 const index = state.pokemons.indexOf(action.payload);
                 state.pokemons.splice(index, 1);
                 state.total = calculateTotal(state.pokemons);
-                console.log(state);
+                console.log("REMOVE");
                 return state;
             };
 
@@ -63,13 +54,5 @@ export function pokeReducer(state = bag, action: ActionModel) {
         return total;
     }
 
-    function isExist(pokemons: Pokemon[], pokemon: Pokemon): boolean {
-        let value = false;
-        pokemons.forEach(p => {
-            if (p.name == pokemon.name) {
-                value = true;
-            }
-        });
-        return value;
-    }
+   
 }

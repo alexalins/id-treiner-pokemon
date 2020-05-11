@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Bag } from 'src/app/models/Bag';
 
 @Component({
   selector: 'app-card-trainer',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardTrainerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<Bag>) { }
 
   ngOnInit() {
+    //this.store.subscribe( r => console.log(r)); 
   }
 
 }

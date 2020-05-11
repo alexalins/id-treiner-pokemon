@@ -1,12 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PokeApiService } from '../../services/pokeApi.service';
 import { Pokemon } from 'src/app/models/pokemon';
-import { EventEmitter } from 'protractor';
-import { Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { Bag } from 'src/app/models/Bag';
-import { Add, List, Count } from 'src/app/redux/Actions';
+import { Add, Remove } from 'src/app/redux/Actions';
 
 
 @Component({
@@ -16,25 +13,48 @@ import { Add, List, Count } from 'src/app/redux/Actions';
 })
 export class ContainerListPokemonComponent implements OnInit {
 
+  pokemons: Pokemon[] = [];
+  searchPokemon: string;
+  isDisabled: boolean = false;
+  AuxPokemons: Pokemon[] = [];
+
   constructor(
     private pokeService: PokeApiService,
     private store: Store<Bag>
   ) { }
-  pokemons: Pokemon[] = [];
-  searchPokemon: string;
 
   ngOnInit() {
     this.pokeService.getPokemons().subscribe(
       res => {
         this.pokemons = res["results"];
-        console.log(this.pokemons);
       },
       error => console.log(error)
     );
-
   }
 
-  async add(pokemon: Pokemon) {
-    this.store.dispatch(Add(pokemon));
+  add(pokemon: Pokemon) {
+    this.store.subscribe(r => this.AuxPokemons = r['cart']['pokemons']);
+    if (!this.isExist(pokemon)) {
+      if (this.AuxPokemons.length <= 5) {
+        pokemon.checked = true;
+        this.store.dispatch(Add(pokemon));
+      } else {
+        alert("Bag Full!!!");
+        //this.isDisabled = true;
+      }
+    } else {
+      this.store.dispatch(Remove(pokemon));
+    }
   }
+
+  isExist(pokemon: Pokemon): boolean {
+    let value = false;
+    this.AuxPokemons.forEach(p => {
+      if (p.name == pokemon.name) {
+        value = true;
+      }
+    });
+    return value;
+  }
+  
 }
