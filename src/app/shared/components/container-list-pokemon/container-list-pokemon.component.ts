@@ -36,11 +36,11 @@ export class ContainerListPokemonComponent implements OnInit {
     this.store.subscribe(r => this.AuxPokemons = r['cart']['pokemons']);
     if (!this.isExist(pokemon)) {
       if (this.AuxPokemons.length <= 5) {
-        pokemon.checked = true;
         this.store.dispatch(Add(pokemon));
-      } else {
-        alert("Bag Full!!!");
-        //this.isDisabled = true;
+        if (this.AuxPokemons.length == 6) {
+          this.isDisabled = true;
+          alert("Bag Full!!!");
+        }
       }
     } else {
       this.store.dispatch(Remove(pokemon));

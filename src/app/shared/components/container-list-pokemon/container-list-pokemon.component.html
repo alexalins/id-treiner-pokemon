@@ -7,7 +7,7 @@
   <div class="lists" style="margin-top: 5%; overflow: auto; height: 250px;">
     <ul class="nes-list is-disc" *ngFor="let pokemon of pokemons | filter: searchPokemon" style="text-align: justify;">
       <label>
-        <input type="checkbox" class="nes-checkbox" (click)="add(pokemon)"/>
+        <input type="checkbox" class="nes-checkbox" (click)="add(pokemon)" [disabled]="isDisabled"/>
         <span>{{pokemon.name}}</span>
       </label>
     </ul>
