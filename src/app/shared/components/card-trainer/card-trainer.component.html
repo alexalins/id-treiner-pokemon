@@ -5,8 +5,14 @@
     <p>ID 1</p>
     <p>{{this.pokemons.length}} Pokémon</p>
     <div style="margin-top: 5%; margin-left: 30%;">
-      <button type="button" class="nes-btn is-primary">Edit</button>
-      <button type="button" class="nes-btn is-primary">View more</button>
+      <button type="button" class="nes-btn is-primary" onclick="document.getElementById('dialog-edit').showModal();">
+        Edit
+      </button>
+      <button type="button" class="nes-btn is-primary" onclick="document.getElementById('dialog-view').showModal();">
+        View Pokemon
+      </button>
     </div>
   </div>
+  <app-alert-edit></app-alert-edit>
+  <app-alert-view [pokemons]="pokemons"></app-alert-view>
 </section>

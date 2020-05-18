@@ -13,6 +13,9 @@ import { CardTrainerComponent } from './shared/components/card-trainer/card-trai
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { StoreModule } from '@ngrx/store';
 import { pokeReducer } from '../app/redux/PokeReducer';
+import { AlertBagComponent } from './shared/components/alert-bag/alert-bag.component';
+import { AlertEditComponent } from './shared/components/alert-edit/alert-edit.component';
+import { AlertViewComponent } from './shared/components/alert-view/alert-view.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { pokeReducer } from '../app/redux/PokeReducer';
     BalloonHomeComponent,
     ContainerHomeComponent,
     ContainerListPokemonComponent,
-    CardTrainerComponent,
+    CardTrainerComponent, 
+    AlertBagComponent,
+    AlertEditComponent,
+    AlertViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +38,7 @@ import { pokeReducer } from '../app/redux/PokeReducer';
     Ng2SearchPipeModule,
     StoreModule.forRoot({
       cart: pokeReducer
-    })
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

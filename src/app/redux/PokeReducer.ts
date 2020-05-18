@@ -19,7 +19,6 @@ export function pokeReducer(state = bag, action: ActionModel) {
                 const index = state.pokemons.indexOf(action.payload);
                 state.pokemons.splice(index, 1);
                 state.total = calculateTotal(state.pokemons);
-                console.log("REMOVE");
                 return state;
             };
 

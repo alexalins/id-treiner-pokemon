@@ -14,7 +14,6 @@ export class CardTrainerComponent implements OnInit {
 
   ngOnInit() {
     this.store.subscribe(r => this.pokemons = r['cart']['pokemons']);
-    console.log(this.pokemons.length)
+    console.log(this.pokemons)
   }
-
 }

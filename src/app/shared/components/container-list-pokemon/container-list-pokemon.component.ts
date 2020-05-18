@@ -39,7 +39,6 @@ export class ContainerListPokemonComponent implements OnInit {
         this.store.dispatch(Add(pokemon));
         if (this.AuxPokemons.length == 6) {
           this.isDisabled = true;
-          alert("Bag Full!!!");
         }
       }
     } else {

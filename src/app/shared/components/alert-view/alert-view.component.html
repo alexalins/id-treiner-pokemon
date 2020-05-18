@@ -1,0 +1,15 @@
+<dialog class="nes-dialog is-dark" id="dialog-view">
+    <form method="dialog">
+        <p class="title">View Pokemon</p>
+        <div class="lists" *ngIf="pokemons.length > 0;else msgEmpty">
+            <ul class="nes-list is-disc" *ngFor="let pokemon of pokemons">
+                <li class="ion-align-self-center">{{pokemon.name}}</li>
+            </ul>
+        </div>
+        <ng-template #msgEmpty><p class="ion-align-self-center">Bag Empty</p></ng-template>
+        <menu class="dialog-menu">
+            <button class="nes-btn is-primary ion-align-self-center"
+                onclick="document.getElementById('dialog-view').close();">Confirm</button>
+        </menu>
+    </form>
+</dialog>
