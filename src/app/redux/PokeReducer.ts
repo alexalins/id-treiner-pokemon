@@ -45,7 +45,6 @@ export function pokeReducer(state = bag, action: ActionModel) {
                 let treiner = new Treiner();
                 treiner = action.payload;
                 state.treiner = treiner;
-                console.log(state)
                 return state;
             };
 

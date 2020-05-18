@@ -5,7 +5,7 @@
   </div>
 
   <div class="profile">
-    <h4 class="id" *ngIf="treiner.name;else idTreiner">Id {{treiner.id}}</h4>
+    <h4 class="id" *ngIf="treiner.id;else idTreiner">Id {{treiner.id}}</h4>
     <ng-template #idTreiner>
       <h4>Id 0</h4>
     </ng-template>
@@ -20,6 +20,9 @@
       </button>
       <button type="button" class="nes-btn is-primary" onclick="document.getElementById('dialog-view').showModal();">
         View Pokemon
+      </button>
+      <button type="button" class="nes-btn is-primary" (click)="clear()">
+        Clear
       </button>
     </div>
   </div>
