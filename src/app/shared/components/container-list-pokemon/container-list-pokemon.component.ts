@@ -41,8 +41,10 @@ export class ContainerListPokemonComponent implements OnInit {
     if (!this.isExist(pokemon)) {
       if (!this.isFull()) {
         this.store.dispatch(Add(pokemon));
-      } else {
-        alert("Bag Full");
+        if (this.isFull()) {
+          let dialog:any = <any>document.getElementById("dialog-bag");
+          dialog.showModal();
+        }
       }
     } else {
       this.store.dispatch(Remove(pokemon));
@@ -63,7 +65,7 @@ export class ContainerListPokemonComponent implements OnInit {
     let value = true;
     if (this.AuxPokemons.length <= 5) {
       value = false;
-    }
+    } 
     return value;
   }
 }
