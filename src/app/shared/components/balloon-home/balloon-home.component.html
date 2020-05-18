@@ -5,7 +5,8 @@
         <i class="nes-ash"></i>
         <!-- Balloon -->
         <div class="nes-balloon from-left">
-          <p>Welcome Treiner!</p>
+          <p *ngIf="treiner.name;else treinerName">Welcome, {{treiner.name}}!</p>
+          <ng-template #treinerName><p>Welcome, Treiner!</p></ng-template>
         </div>
       </section>
   

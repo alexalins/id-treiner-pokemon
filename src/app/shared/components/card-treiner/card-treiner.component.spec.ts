@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { CardTrainerComponent } from './card-trainer.component';
+import { CardTrainerComponent } from './card-treiner.component';
 
 describe('CardTrainerComponent', () => {
   let component: CardTrainerComponent;

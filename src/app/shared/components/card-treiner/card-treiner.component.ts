@@ -2,18 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Bag } from 'src/app/models/Bag';
 import { Pokemon } from 'src/app/models/pokemon';
+import { Treiner } from 'src/app/models/Treiner';
 
 @Component({
   selector: 'app-card-trainer',
-  templateUrl: './card-trainer.component.html',
-  styleUrls: ['./card-trainer.component.css']
+  templateUrl: './card-treiner.component.html',
+  styleUrls: ['./card-treiner.component.css']
 })
 export class CardTrainerComponent implements OnInit {
   pokemons: Pokemon[] = [];
-  constructor(private store: Store<Bag>) { }
+  treiner: Treiner = new Treiner();
+
+  constructor(
+    private store: Store<Bag>,
+  ) { }
 
   ngOnInit() {
     this.store.subscribe(r => this.pokemons = r['cart']['pokemons']);
-    console.log(this.pokemons)
+    this.store.subscribe(r => this.treiner = r['cart']['treiner']);
   }
 }

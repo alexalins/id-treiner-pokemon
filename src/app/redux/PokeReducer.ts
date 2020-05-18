@@ -2,6 +2,7 @@ import { Pokemon } from '../models/pokemon';
 import { Bag } from '../models/Bag';
 import { ActionModel } from './ActionModel';
 import { ActionTypes } from './Actions';
+import { Treiner } from '../models/Treiner';
 
 export const bag = new Bag();
 
@@ -26,19 +27,26 @@ export function pokeReducer(state = bag, action: ActionModel) {
             {
                 state = new Bag();
                 state.total = calculateTotal(state.pokemons);
-                console.log(state);
                 return state;
             };
 
         case ActionTypes.List:
             {
-                console.log(state);
                 return state;
             };
 
         case ActionTypes.Count:
             {
                 return calculateTotal(state.pokemons);
+            };
+
+        case ActionTypes.Treiner:
+            {
+                let treiner = new Treiner();
+                treiner = action.payload;
+                state.treiner = treiner;
+                console.log(state)
+                return state;
             };
 
         default:
@@ -53,5 +61,5 @@ export function pokeReducer(state = bag, action: ActionModel) {
         return total;
     }
 
-   
+
 }

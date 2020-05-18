@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Treiner } from 'src/app/models/Treiner';
+import { Store } from '@ngrx/store';
+import { Treiner as addTreiner } from 'src/app/redux/Actions';
 
 @Component({
   selector: 'app-alert-edit',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlertEditComponent implements OnInit {
 
-  constructor() { }
+  treiner = new Treiner(); 
+  constructor( private store: Store<Treiner>) { }
 
   ngOnInit() {
+    
   }
 
+  save() {
+    this.store.dispatch(addTreiner(this.treiner));
+  }
 }

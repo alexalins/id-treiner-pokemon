@@ -9,7 +9,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { BalloonHomeComponent } from './shared/components/balloon-home/balloon-home.component';
 import { ContainerHomeComponent } from './shared/components/container-home/container-home.component';
 import { ContainerListPokemonComponent } from './shared/components/container-list-pokemon/container-list-pokemon.component';
-import { CardTrainerComponent } from './shared/components/card-trainer/card-trainer.component';
+import { CardTrainerComponent } from './shared/components/card-treiner/card-treiner.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { StoreModule } from '@ngrx/store';
 import { pokeReducer } from '../app/redux/PokeReducer';

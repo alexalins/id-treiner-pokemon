@@ -1,13 +1,15 @@
 <dialog class="nes-dialog is-dark" id="dialog-edit">
     <form method="dialog">
-        <p class="title">Edit name</p>
+        <p class="title">Edit Treiner</p>
         <div class="nes-field">
+            <label for="name_field">Your Id</label>
+            <input type="number" id="id_field" class="nes-input" [(ngModel)]="treiner.id" name="id">
             <label for="name_field">Your name</label>
-            <input type="text" id="name_field" class="nes-input">
+            <input type="text" id="name_field" class="nes-input" [(ngModel)]="treiner.name" name="name">
         </div>
         <menu class="dialog-menu">
             <button class="nes-btn" onclick="document.getElementById('dialog-edit').close();">Cancel</button>
-            <button class="nes-btn is-primary" onclick="document.getElementById('dialog-edit').close();">Confirm</button>
+            <button class="nes-btn is-primary" (click)="save()" onclick="document.getElementById('dialog-edit').close();">Confirm</button>
         </menu>
     </form>
 </dialog>

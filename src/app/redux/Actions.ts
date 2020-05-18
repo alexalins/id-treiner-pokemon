@@ -5,7 +5,8 @@ export enum ActionTypes {
     Remove = 'REM',
     Clear = 'CLE',
     List = 'LIS',
-    Count = 'COU'
+    Count = 'COU',
+    Treiner = 'NEW'
 }
 
 export const Add = (product: any) => {
@@ -26,4 +27,8 @@ export const List = () => {
 
 export const Count = () => {
     return <Action>{ type: ActionTypes.Count, payload: null };
+}
+
+export const Treiner = (product: any) => {
+    return <Action>{ type: ActionTypes.Treiner, payload: product };
 }
