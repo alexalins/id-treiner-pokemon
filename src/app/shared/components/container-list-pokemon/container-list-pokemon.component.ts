@@ -32,14 +32,17 @@ export class ContainerListPokemonComponent implements OnInit {
     );
   }
 
+  clear() {
+    this.searchPokemon = null;
+  }
+
   add(pokemon: Pokemon) {
     this.store.subscribe(r => this.AuxPokemons = r['cart']['pokemons']);
     if (!this.isExist(pokemon)) {
-      if (this.AuxPokemons.length <= 5) {
+      if (!this.isFull()) {
         this.store.dispatch(Add(pokemon));
-        if (this.AuxPokemons.length == 6) {
-          this.isDisabled = true;
-        }
+      } else {
+        alert("Bag Full");
       }
     } else {
       this.store.dispatch(Remove(pokemon));
@@ -56,4 +59,11 @@ export class ContainerListPokemonComponent implements OnInit {
     return value;
   }
   
+  isFull(): boolean {
+    let value = true;
+    if (this.AuxPokemons.length <= 5) {
+      value = false;
+    }
+    return value;
+  }
 }

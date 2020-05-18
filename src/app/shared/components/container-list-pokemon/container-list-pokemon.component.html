@@ -1,13 +1,17 @@
 <div class="nes-container with-title is-centered" style="height: 408px;">
   <p class="title">Selection Pókemon</p>
-  <div class="nes-field">
-    <label for="name_field" >Search</label>
-    <input type="text" id="name_field" class="nes-input" [(ngModel)]="searchPokemon" >
+  <div class="grid-container">
+    <div>
+      <input type="text" id="name_field" class="nes-input" [(ngModel)]="searchPokemon" placeholder="Search">
+    </div>
+    <div>
+      <button type="button" class="nes-btn" (click)="clear()">Clear</button>
+    </div>
   </div>
   <div class="lists" style="margin-top: 5%; overflow: auto; height: 250px;">
     <ul class="nes-list is-disc" *ngFor="let pokemon of pokemons | filter: searchPokemon" style="text-align: justify;">
       <label>
-        <input type="checkbox" class="nes-checkbox" (click)="add(pokemon)" [disabled]="isDisabled"/>
+        <input type="checkbox" class="nes-checkbox" (click)="add(pokemon)" [disabled]="isFull()" [checked]="isExist(pokemon)"/>
         <span>{{pokemon.name}}</span>
       </label>
     </ul>

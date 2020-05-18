@@ -3,10 +3,10 @@
         <p class="title">View Pokemon</p>
         <div class="lists" *ngIf="pokemons.length > 0;else msgEmpty">
             <ul class="nes-list is-disc" *ngFor="let pokemon of pokemons">
-                <li class="ion-align-self-center">{{pokemon.name}}</li>
+                <li class="ion-align-self-center nes-text is-error">{{pokemon.name}}</li>
             </ul>
         </div>
-        <ng-template #msgEmpty><p class="ion-align-self-center">Bag Empty</p></ng-template>
+        <ng-template #msgEmpty><p class="nes-text is-error" >Bag Empty</p></ng-template>
         <menu class="dialog-menu">
             <button class="nes-btn is-primary ion-align-self-center"
                 onclick="document.getElementById('dialog-view').close();">Confirm</button>
