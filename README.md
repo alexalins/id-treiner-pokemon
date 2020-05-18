@@ -8,4 +8,4 @@ Rode `ng serve` e navegue `http://localhost:4200/` para vizualizar o site.
 
 ## Visualizando
 
-![image](https://user-images.githubusercontent.com/17071599/82268754-26723200-9946-11ea-8060-a705b8ef22fc.png)
+![image](https://user-images.githubusercontent.com/17071599/82268990-b4e6b380-9946-11ea-9cd3-bb2276992e7c.png)
